@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ቤተሰብ ቢንጎ - Betsebe Bingo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- የላይኛው መረጃ እና የላይቭ ስክሪን -->
+    <div class="header-container">
+        <h1>ቤተሰብ ቢንጎ 🎰</h1>
+        <div id="timer-box">የቀረው ጊዜ: <span id="timer">49</span> ሰከንድ</div>
+        <div id="live-screen">የተጠራ ቁጥር: <span id="called-number">--</span></div>
+    </div>
+
+    <!-- የቢንጎ 5x5 ካርቴላ ማሳያ (የተመረጠውን ለማሳየት) -->
+    <div id="selected-cartela-display" class="hidden">
+        <h3>የእርስዎ ካርቴላ (5x5)</h3>
+        <div id="bingo-grid" class="grid-5x5"></div>
+    </div>
+
+    <!-- ከ 1 እስከ 600 የካርቴላ መምረጫ -->
+    <h2>ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
+    <div id="cartela-list" class="cartela-container">
+        <!-- ቁጥሮቹ በጃቫስክሪፕት አማካኝነት እዚህ ይፈጠራሉ -->
+    </div>
+
+    <!-- የታችኛው የኔቪጌሽን ባር -->
+    <div class="navbar">
+        <button class="nav-item active" onclick="switchTab('game')">🎮 Game</button>
+        <button class="nav-item" onclick="switchTab('wallet')">💳 Wallet</button>
+        <button class="nav-item" onclick="switchTab('history')">📜 History</button>
+        <button class="nav-item" onclick="switchTab('profile')">👤 Profile</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
