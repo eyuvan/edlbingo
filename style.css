@@ -4,7 +4,7 @@ body {
     color: white;
     margin: 0;
     padding: 15px;
-    padding-bottom: 70px;
+    padding-bottom: 80px;
     text-align: center;
 }
 
@@ -33,9 +33,9 @@ body {
 
 .cartela-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
-    max-height: 250px;
+    max-height: 350px;
     overflow-y: auto;
     background: #222;
     padding: 10px;
@@ -44,18 +44,39 @@ body {
 
 .cartela-box {
     background-color: #3a3a3a;
-    padding: 12px;
+    padding: 15px 5px;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s;
 }
 
-/* ካርቴላ ሲመረጥ የሚቀየረው ከለር */
 .cartela-box.selected {
     background-color: #ffa500;
     color: black;
     transform: scale(1.05);
+}
+
+.wallet-box {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.wallet-item {
+    background: #111;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #ffa500;
+}
+
+.wallet-item p {
+    font-size: 22px;
+    color: #2ed573;
+    margin: 5px 0 0 0;
+    font-weight: bold;
 }
 
 .grid-5x5 {
@@ -85,7 +106,7 @@ body {
     background: #111;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 15px 0;
     border-top: 2px solid #333;
 }
 
@@ -102,4 +123,4 @@ body {
     font-weight: bold;
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }

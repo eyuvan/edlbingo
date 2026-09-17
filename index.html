@@ -3,35 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ቤተሰብ ቢንጎ - Betsebe Bingo</title>
+    <title>እድል ቢንጎ - Lucky Bingo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- የላይኛው መረጃ እና የላይቭ ስክሪን -->
     <div class="header-container">
-        <h1>ቤተሰብ ቢንጎ 🎰</h1>
+        <h1>እድል ቢንጎ (Lucky Bingo) 🎰</h1>
         <div id="timer-box">የቀረው ጊዜ: <span id="timer">49</span> ሰከንድ</div>
         <div id="live-screen">የተጠራ ቁጥር: <span id="called-number">--</span></div>
     </div>
 
-    <!-- የቢንጎ 5x5 ካርቴላ ማሳያ (የተመረጠውን ለማሳየት) -->
+    <!-- የቢንጎ 5x5 ካርቴላ ማሳያ -->
     <div id="selected-cartela-display" class="hidden">
         <h3>የእርስዎ ካርቴላ (5x5)</h3>
         <div id="bingo-grid" class="grid-5x5"></div>
     </div>
 
-    <!-- ከ 1 እስከ 600 የካርቴላ መምረጫ -->
-    <h2>ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
-    <div id="cartela-list" class="cartela-container">
-        <!-- ቁጥሮቹ በጃቫስክሪፕት አማካኝነት እዚህ ይፈጠራሉ -->
+    <!-- ዋናው የጨዋታ ገጽ (ካርቴላዎች ያሉበት) -->
+    <div id="game-tab" class="tab-content">
+        <h2>ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
+        <div id="cartela-list" class="cartela-container">
+            <!-- 1-600 ቁጥሮች በጃቫስክሪፕት እዚህ ይወጣሉ -->
+        </div>
     </div>
 
-    <!-- የታችኛው የኔቪጌሽን ባር -->
+    <!-- የዋሌት ገጽ (Main Wallet & Play Wallet ማሳያ) -->
+    <div id="wallet-tab" class="tab-content hidden">
+        <h2>የእርስዎ የገንዘብ ቦርሳ (Wallet) 💳</h2>
+        <div class="wallet-box">
+            <div class="wallet-item">
+                <h3>Main Wallet (ዋና ሂሳብ)</h3>
+                <p id="main-wallet-amount">10.00 ብር</p>
+            </div>
+            <div class="wallet-item">
+                <h3>Play Wallet (መጫወቻ ሂሳብ)</h3>
+                <p id="play-wallet-amount">0.00 ብር</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ሌሎች ገጾች ለጊዜው ባዶ ማሳያ -->
+    <div id="history-tab" class="tab-content hidden"><h2>የጨዋታ ታሪክ (History) 📜</h2><p>ምንም አይነት ታሪክ የለም</p></div>
+    <div id="profile-tab" class="tab-content hidden"><h2>የአባልነት መገለጫ (Profile) 👤</h2><p>የተጠቃሚ መረጃ...</p></div>
+
+    <!-- የታችኛው የኔቪጌชั่น ባር -->
     <div class="navbar">
-        <button class="nav-item active" onclick="switchTab('game')">🎮 Game</button>
-        <button class="nav-item" onclick="switchTab('wallet')">💳 Wallet</button>
-        <button class="nav-item" onclick="switchTab('history')">📜 History</button>
-        <button class="nav-item" onclick="switchTab('profile')">👤 Profile</button>
+        <button id="nav-game" class="nav-item active" onclick="switchTab('game')">🎮 Game</button>
+        <button id="nav-wallet" class="nav-item" onclick="switchTab('wallet')">💳 Wallet</button>
+        <button id="nav-history" class="nav-item" onclick="switchTab('history')">📜 History</button>
+        <button id="nav-profile" class="nav-item" onclick="switchTab('profile')">👤 Profile</button>
     </div>
 
     <script src="app.js"></script>
