@@ -19,15 +19,16 @@
         <h3>የእርስዎ ካርቴላ (5x5)</h3>
         <div id="bingo-grid" class="grid-5x5"></div>
     </div>
-    <!-- ዋናው የጨዋታ ገጽ (ካርቴላዎች ያሉበት) -->
+
+    <!-- 1. የጨዋታ ገጽ (Game Tab) -->
     <div id="game-tab" class="tab-content">
         <h2>ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
         <div id="cartela-list" class="cartela-container">
-            <!-- 1-600 ቁጥሮች በጃቫስክሪፕት እዚህ ይወጣሉ -->
+            <!-- 1-600 ቁጥሮች እዚህ ይወጣሉ -->
         </div>
     </div>
 
-    <!-- የዋሌት ገጽ (Main Wallet & Play Wallet ማሳያ) -->
+    <!-- 2. የዋሌት ገጽ (Wallet Tab) -->
     <div id="wallet-tab" class="tab-content hidden">
         <h2>የእርስዎ የገንዘብ ቦርሳ (Wallet) 💳</h2>
         <div class="wallet-box">
@@ -40,11 +41,27 @@
                 <p id="play-wallet-amount">0.00 ብር</p>
             </div>
         </div>
+
+        <!-- የቴሌብር ብር ማስገቢያ (Deposit) ማሳያ -->
+        <div class="deposit-box">
+            <h3>ገንዘብ ለማስገባት (Deposit)</h3>
+            <p>እባክዎ በቴሌብር (telebirr) ወደዚህ ስልክ ቁጥር ገንዘብ ያስገቡ፡</p>
+            <div class="phone-number">0928361886</div>
+            <small>⚠️ ገንዘብ ካስገቡ በኋላ ደረሰኝ ለሳፖርት ይላኩ።</small>
+        </div>
     </div>
 
-    <!-- ሌሎች ገጾች ለጊዜው ባዶ ማሳያ -->
-    <div id="history-tab" class="tab-content hidden"><h2>የጨዋታ ታሪክ (History) 📜</h2><p>ምንም አይነት ታሪክ የለም</p></div>
-    <div id="profile-tab" class="tab-content hidden"><h2>የአባልነት መገለጫ (Profile) 👤</h2><p>የተጠቃሚ መረጃ...</p></div>
+    <!-- 3. የታሪክ ገጽ (History Tab) -->
+    <div id="history-tab" class="tab-content hidden">
+        <h2>የጨዋታ ታሪክ (History) 📜</h2>
+        <p>ምንም አይነት ታሪክ የለም</p>
+    </div>
+
+    <!-- 4. የፕሮፋይል ገጽ (Profile Tab) -->
+    <div id="profile-tab" class="tab-content hidden">
+        <h2>የአባልነት መገለጫ (Profile) 👤</h2>
+        <p>የተጠቃሚ መረጃ...</p>
+    </div>
 
     <!-- የታችኛው የኔቪጌชั่น ባር -->
     <div class="navbar">

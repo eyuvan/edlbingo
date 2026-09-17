@@ -4,7 +4,7 @@ body {
     color: white;
     margin: 0;
     padding: 15px;
-    padding-bottom: 80px;
+    padding-bottom: 90px;
     text-align: center;
 }
 
@@ -59,14 +59,13 @@ body {
 
 .wallet-box {
     background: #2c2c2c;
-    padding: 20px;
+    padding: 15px;
     border-radius: 10px;
-    margin-top: 20px;
 }
 
 .wallet-item {
     background: #111;
-    padding: 15px;
+    padding: 12px;
     margin-bottom: 10px;
     border-radius: 8px;
     border-left: 5px solid #ffa500;
@@ -77,6 +76,26 @@ body {
     color: #2ed573;
     margin: 5px 0 0 0;
     font-weight: bold;
+}
+
+.deposit-box {
+    background: #1e272e;
+    border: 2px dashed #ffa500;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.phone-number {
+    font-size: 26px;
+    color: #ffa500;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 10px 0;
+    background: #000;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
 }
 
 .grid-5x5 {
@@ -108,6 +127,7 @@ body {
     justify-content: space-around;
     padding: 15px 0;
     border-top: 2px solid #333;
+    z-index: 100;
 }
 
 .nav-item {

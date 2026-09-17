@@ -2,21 +2,21 @@ let selectedCartelas = [];
 let timeLeft = 49;
 let selectionOpen = true;
 
-// ገጹ እንደተከፈተ 1-600 ቁጥሮችን በካርቴላ መምረጫው ላይ በግድ እንዲፈጥር ማድረግ
-document.addEventListener("DOMContentLoaded", () => {
+// ገጹ እንደተከፈተ 1-600 ቁጥሮችን በግድ እንዲፈጥር እና ታይመሩን እንዲያስጀምር ማድረግ
+window.onload = function() {
     const cartelaList = document.getElementById('cartela-list');
-    if(cartelaList) {
-        cartelaList.innerHTML = ""; // ገጹን ማጽዳት
+    if (cartelaList) {
+        cartelaList.innerHTML = ""; 
         for (let i = 1; i <= 600; i++) {
             let box = document.createElement('div');
             box.className = 'cartela-box';
             box.innerText = i;
-            box.onclick = () => selectCartela(i, box);
+            box.onclick = function() { selectCartela(i, box); };
             cartelaList.appendChild(box);
         }
     }
-    startCountdown(); // ታይመሩን እዚህ ላይ ማስጀመር
-});
+    startCountdown(); 
+};
 
 // ካርቴላ መምረጥ (እስከ 5 ብቻ)
 function selectCartela(id, element) {
@@ -52,12 +52,14 @@ function generate5x5Grid() {
     }
 }
 
-// የ 49 ሰከንድ ታይመር ወደ ታች እንዲቆጥር የሚያደርግ የተስተካከለ ተግባር
+// ታይመሩን በሰከንድ ወደ ታች የሚቀንስ ተግባር
 function startCountdown() {
     const timerElement = document.getElementById('timer');
-    const timerInterval = setInterval(() => {
+    const timerInterval = setInterval(function() {
         timeLeft--;
-        if(timerElement) timerElement.innerText = timeLeft;
+        if (timerElement) {
+            timerElement.innerText = timeLeft;
+        }
         
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
@@ -68,24 +70,26 @@ function startCountdown() {
     }, 1000);
 }
 
-// የቁጥር ጥሪ መጀመር
+// የቢንጎ ቁጥሮች ጥሪ
 function startBingoCalling() {
     const letters = ['B', 'I', 'N', 'G', 'O'];
-    setInterval(() => {
+    setInterval(function() {
         let randomLetter = letters[Math.floor(Math.random() * letters.length)];
         let randomNumber = Math.floor(Math.random() * 75) + 1;
         const calledNumBox = document.getElementById('called-number');
-        if(calledNumBox) calledNumBox.innerText = ${randomLetter}-${randomNumber};
+        if (calledNumBox) {
+            calledNumBox.innerText = randomLetter + "-" + randomNumber;
+        }
     }, 3000);
 }
 
-// በታችኛው የኔቪጌሽን ባር ገጾችን ለመቀያየር
+// የኔቪጌሽን ገጾችን መለዋወጫ
 function switchTab(tabName) {
     const tabs = ['game', 'wallet', 'history', 'profile'];
-    tabs.forEach(tab => {
-        document.getElementById(${tab}-tab).classList.add('hidden');
-        document.getElementById(nav-${tab}).classList.remove('active');
+    tabs.forEach(function(tab) {
+        document.getElementById(tab + '-tab').classList.add('hidden');
+        document.getElementById('nav-' + tab).classList.remove('active');
     });
-    document.getElementById(${tabName}-tab).classList.remove('hidden');
-    document.getElementById(nav-${tabName}).classList.add('active');
+    document.getElementById(tabName + '-tab').classList.remove('hidden');
+    document.getElementById('nav-' + tabName).classList.add('active');
 }
