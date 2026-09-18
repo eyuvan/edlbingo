@@ -112,7 +112,8 @@ function speakBingo(text) {
 function startBingoCalling() {
     let allNumbers = [];
     for (let i = 1; i <= 75; i++) allNumbers.push(i);
-    allNumbers.sort(() => Math.random() - 0.5); // ቁጥሮቹን በዘፈቀደlet currentIndex = 0;
+    allNumbers.sort(() => Math.random() - 0.5); // ቁጥሮቹን በዘፈቀደ ማቀላቀል
+let currentIndex = 0;
     const callingInterval = setInterval(function() {
         if (currentIndex >= allNumbers.length) {
             clearInterval(callingInterval);
