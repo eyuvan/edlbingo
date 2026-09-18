@@ -41,7 +41,7 @@ body {
 /* 2. የ 1-600 ካርቴላዎች መጠን እንዲያንስ የተደረገ ማሻሻያ */
 .cartela-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 አምድ በማድረግ አጠበብነው */
+    grid-template-columns: repeat(5, 1fr);
     gap: 5px;
     max-height: 320px;
     overflow-y: auto;
@@ -52,8 +52,8 @@ body {
 
 .cartela-box {
     background-color: #3a3a3a;
-    padding: 8px 2px; /* ፓዲንግ በመቀነስ መጠኑ እንዲያንስ ተደረገ */
-    font-size: 12px;  /* የቁጥሮቹ መጠን አነስ እንዲል */
+    padding: 8px 2px;
+    font-size: 12px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
@@ -65,7 +65,7 @@ body {
     color: black;
 }
 
-/* 3. የ B N G O አምዶች ዲዛይን ማሻሻያ */
+/* 3. የ B N G O አምዶች እና የቁጥሮች ዝርዝር ዲዛይን */
 .board-columns {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -92,10 +92,35 @@ body {
 }
 
 .col-numbers {
-    font-size: 11px;
-    color: #2ed573;
-    line-height: 1.5;
-    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 5px;
+}
+
+/* በአምዱ ውስጥ ያሉ መደበኛ ቁጥሮች ስታይል */
+.board-num {
+    font-size: 12px;
+    background: #333;
+    color: #aaa;
+    padding: 2px 0;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+#bingo-board h3 {
+    font-size: 16px;
+    margin: 5px 0;
+    color: #eee;
+}
+
+/* 💥 አዲስ የተጨመረ ማሻሻያ፡- ቁጥሩ ሲጠራ ደምቆ የሚታይበት ከለር */
+.board-num.highlighted {
+    background-color: #2ed573 !important; /* ማራኪ አረንጓዴ ከለር */
+    color: #000 !important;
+    transform: scale(1.1);
+    box-shadow: 0 0 8px #2ed573;
 }
 
 /* የዋሌት እና የላይ አቀማመጥ */
