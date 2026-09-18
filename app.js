@@ -1,4 +1,42 @@
-let selectedCartelas = [];
+let selectedCartelas = [
+// ከፓይተን ሰርቨር ጋር መገናኛ ሊንክ (በኮምፒውተርህ ሲሆን localhost ነው)
+const API_BASE_URL = "http://localhost:5000"; 
+
+// ከቴሌግራም ሊንክ የተጫዋቹን ID መውሰጃ
+const urlParams = new URLSearchParams(window.location.search);
+const TelegramUserID = urlParams.get('user_id') || "12345"; // ካልተገኘ ናሙና
+
+// ገጹ እንደተከፈተ እውነተኛውን ባላንስ ከዳታቤዝ አምጥቶ ማሳያ
+function loadRealBalance() {
+    fetch(${API_BASE_URL}/api/get_balance?user_id=${TelegramUserID})
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('main-wallet-amount').innerText = data.main_wallet.toFixed(2) + " ብር";
+            document.getElementById('play-wallet-amount').innerText = data.play_wallet.toFixed(2) + " ብር";
+        });
+}
+
+// ካርቴላ በተመረጠ ቁጥር 10 ብር ከዳታቤዝ የሚቀንስ ተግባር
+function buyCartelaOnDatabase() {
+    fetch(${API_BASE_URL}/api/buy_cartela, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: TelegramUserID, count: 1 })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.success) {
+            // በዳታቤዝ ከተቀነሰ በስክሪኑ ላይ ያለውን ባላንስ ማዘመን
+            document.getElementById('main-wallet-amount').innerText = data.main_wallet.toFixed(2) + " ብር";
+            document.getElementById('play-wallet-amount').innerText = data.play_wallet.toFixed(2) + " ብር";
+        } else {
+            alert(data.message);
+        }
+    });
+}
+
+// ይህንን ገጹ ሲነሳ እንዲያነበው መጨረሻ ላይ ጥራው
+loadRealBalance() ];
 let timeLeft = 49;
 let selectionOpen = true;
 
