@@ -9,7 +9,7 @@
 <body>
     <!-- የላይኛው መረጃ እና የላይቭ ስክሪን -->
     <div class="header-container">
-        <h1 class="small-title">እድል ቢንጎ (Lucky Bingo) 🎰</h1>
+        <h1>እድል ቢንጎ (Lucky Bingo) 🎰</h1>
         <div id="timer-box">የቀረው ጊዜ: <span id="timer">49</span> ሰከንድ</div>
         <div id="live-screen">የተጠራ ቁጥር: <span id="called-number">--</span></div>
     </div>
@@ -22,21 +22,9 @@
 
     <!-- 1. የጨዋታ ገጽ (Game Tab) -->
     <div id="game-tab" class="tab-content">
-        <!-- የ B I N G O ቁጥሮች ሰሌዳ (ልክ ጌሙ ሲጀምር 1-75 ቁጥሮች እዚህ ተደርድረው ይቆያሉ) -->
-        <div id="bingo-board" class="hidden">
-            <h3>የተጠሩ ቁጥሮች ሰሌዳ</h3>
-            <div class="board-columns">
-                <div class="column"><div class="col-letter">B</div><div id="col-B" class="col-numbers"></div></div>
-                <div class="column"><div class="col-letter">I</div><div id="col-I" class="col-numbers"></div></div>
-                <div class="column"><div class="col-letter">N</div><div id="col-N" class="col-numbers"></div></div>
-                <div class="column"><div class="col-letter">G</div><div id="col-G" class="col-numbers"></div></div>
-                <div class="column"><div class="col-letter">O</div><div id="col-O" class="col-numbers"></div></div>
-            </div>
-        </div>
-
-        <h2 id="select-title">ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
+        <h2>ካርቴላ ይምረጡ (እስከ 5 ካርቴላ)</h2>
         <div id="cartela-list" class="cartela-container">
-            <!-- 1-600 ቁጥሮች (በትንሽ መጠን) እዚህ ይወጣሉ -->
+            <!-- 1-600 ቁጥሮች እዚህ ይወጣሉ -->
         </div>
     </div>
 
@@ -54,6 +42,7 @@
             </div>
         </div>
 
+        <!-- የቴሌብር ብር ማስገቢያ (Deposit) ማሳያ -->
         <div class="deposit-box">
             <h3>ገንዘብ ለማስገባት (Deposit)</h3>
             <p>እባክዎ በቴሌብር (telebirr) ወደዚህ ስልክ ቁጥር ገንዘብ ያስገቡ፡</p>
@@ -62,8 +51,17 @@
         </div>
     </div>
 
-    <div id="history-tab" class="tab-content hidden"><h2>የጨዋታ ታሪክ (History) 📜</h2><p>ምንም አይነት ታሪክ የለም</p></div>
-    <div id="profile-tab" class="tab-content hidden"><h2>የአባልነት መገለጫ (Profile) 👤</h2><p>የተጠቃሚ መረጃ...</p></div>
+    <!-- 3. የታሪክ ገጽ (History Tab) -->
+    <div id="history-tab" class="tab-content hidden">
+        <h2>የጨዋታ ታሪክ (History) 📜</h2>
+        <p>ምንም አይነት ታሪክ የለም</p>
+    </div>
+
+    <!-- 4. የፕሮፋይል ገጽ (Profile Tab) -->
+    <div id="profile-tab" class="tab-content hidden">
+        <h2>የአባልነት መገለጫ (Profile) 👤</h2>
+        <p>የተጠቃሚ መረጃ...</p>
+    </div>
 
     <!-- የታችኛው የኔቪጌชั่น ባር -->
     <div class="navbar">
