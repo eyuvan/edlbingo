@@ -14,7 +14,7 @@ window.onload = function() {
             cartelaList.appendChild(box);
         }
     }
-    // ልክ ገጹ ሲከፈት 1-75 ቁጥሮችን በየአምዳቸው ሰሌዳው ላይ አዘጋጅቶ ማስቀመጥ
+    // ልክ ገጹ ሲከፈት 1-75 ቁጥሮችን በየአምዳቸው ሰሌዳው ላይ ማዘጋጀት
     setupBingoBoardNumbers();
     startCountdown(); 
 };
@@ -37,13 +37,16 @@ function selectCartela(id, element) {
 
 function generate5x5Grid() {
     const grid = document.getElementById('bingo-grid');
-    document.getElementById('selected-cartela-display').classList.remove('hidden');
-    grid.innerHTML = '';
-    for (let i = 1; i <= 25; i++) {
-        let cell = document.createElement('div');
-        cell.className = 'grid-cell';
-        cell.innerText = i === 13 ? "FREE" : Math.floor(Math.random() * 75) + 1;
-        grid.appendChild(cell);
+    const displayBox = document.getElementById('selected-cartela-display');
+    if (displayBox) displayBox.classList.remove('hidden');
+    if (grid) {
+        grid.innerHTML = '';
+        for (let i = 1; i <= 25; i++) {
+            let cell = document.createElement('div');
+            cell.className = 'grid-cell';
+            cell.innerText = i === 13 ? "FREE" : Math.floor(Math.random() * 75) + 1;
+            grid.appendChild(cell);
+        }
     }
 }
 
@@ -56,19 +59,24 @@ function startCountdown() {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             selectionOpen = false;
-            document.getElementById('timer-box').innerText = "ምርጫ ተዘግቷል! ጨዋታው ተጀምሯል...";
+            
+            const timerBox = document.getElementById('timer-box');
+            if (timerBox) timerBox.innerText = "ምርጫ ተዘግቷል! ጨዋታው ተጀምሯል...";
             
             // የ 1-600 ምርጫን መደበቅ እና ዝግጁ የሆነውን የአምዶች ሰሌዳ ማሳየት
-            document.getElementById('cartela-list').classList.add('hidden');
-            document.getElementById('select-title').classList.add('hidden');
-            document.getElementById('bingo-board').classList.remove('hidden');
+            const list = document.getElementById('cartela-list');
+            const title = document.getElementById('select-title');
+            const board = document.getElementById('bingo-board');
+            
+            if (list) list.classList.add('hidden');
+            if (title) title.classList.add('hidden');
+            if (board) board.classList.remove('hidden');
             
             startBingoCalling(); 
         }
     }, 1000);
 }
 
-// 💥 1-75 ያሉትን ቁጥሮች በህጉ መሰረት በየአምዳቸው (B, I, N, G, O) አስቀድሞ መደርደር
 function setupBingoBoardNumbers() {
     const columns = {
         'B': { start: 1, end: 15, id: 'col-B' },
@@ -86,7 +94,7 @@ function setupBingoBoardNumbers() {
             for (let n = col.start; n <= col.end; n++) {
                 let numSpan = document.createElement('div');
                 numSpan.className = 'board-num';
-                numSpan.id = 'b-num-' + n; // እያንዳንዱ ቁጥር የራሱ መለያ ID ይኖረዋል
+                numSpan.id = 'b-num-' + n; 
                 numSpan.innerText = n;
                 el.appendChild(numSpan);
             }
@@ -94,7 +102,6 @@ function setupBingoBoardNumbers() {
     }
 }
 
-// ድምፅ ማሰማት (በማራኪ የሴት ድምፅ)
 function speakBingo(text) {
     if ('speechSynthesis' in window) {
         let utterance = new SpeechSynthesisUtterance(text);
@@ -108,13 +115,13 @@ function speakBingo(text) {
         window.speechSynthesis.speak(utterance);
     }
 }
-
 function startBingoCalling() {
     let allNumbers = [];
     for (let i = 1; i <= 75; i++) allNumbers.push(i);
-    allNumbers.sort(() => Math.random() - 0.5); // ቁጥሮቹን በዘፈቀደ ማቀላቀል
+    allNumbers.sort(() => Math.random() - 0.5); 
+
     let currentIndex = 0;
-        const callingInterval = setInterval(function() {
+    const callingInterval = setInterval(function() {
         if (currentIndex >= allNumbers.length) {
             clearInterval(callingInterval);
             return;
@@ -131,13 +138,12 @@ function startBingoCalling() {
 
         let fullCall = letter + "-" + num;
         
-        // 1. የላይቭ ስክሪኑን ማዘመን
-        document.getElementById('called-number').innerText = fullCall;
+        const calledNumBox = document.getElementById('called-number');
+        if (calledNumBox) calledNumBox.innerText = fullCall;
         
-        // 2. በሴት ድምፅ ቁጥሩን መጥራት
-        speakBingo(${letter} ${num});
+        speakBingo(letter + " " + num);
 
-        # 3. 💥 አዲስ ማሻሻያ፦ የተጠራውን ቁጥር በአምዱ ውስጥ ፈልጎ በቀለም ማድመቅ (Highlight ማድረግ)
+        // የተጠራውን ቁጥር በአምዱ ውስጥ ፈልጎ በቀለም ማድመቅ
         const targetNumElement = document.getElementById('b-num-' + num);
         if (targetNumElement) {
             targetNumElement.classList.add('highlighted');
@@ -150,9 +156,14 @@ function startBingoCalling() {
 function switchTab(tabName) {
     const tabs = ['game', 'wallet', 'history', 'profile'];
     tabs.forEach(function(tab) {
-        document.getElementById(tab + '-tab').classList.add('hidden');
-        document.getElementById('nav-' + tab).classList.remove('active');
+        const tabEl = document.getElementById(tab + '-tab');
+        const navEl = document.getElementById('nav-' + tab);
+        if (tabEl) tabEl.classList.add('hidden');
+        if (navEl) navEl.classList.remove('active');
     });
-    document.getElementById(tabName + '-tab').classList.remove('hidden');
-    document.getElementById('nav-' + tabName).classList.add('active');
+    
+    const activeTab = document.getElementById(tabName + '-tab');
+    const activeNav = document.getElementById('nav-' + tabName);
+    if (activeTab) activeTab.classList.remove('hidden');
+    if (activeNav) activeNav.classList.add('active');
 }
